@@ -40,7 +40,7 @@ import com.wangdaye.mysplash.main.presenter.fragment.ToolbarImplementor;
 import com.wangdaye.mysplash.common.ui.adapter.MyPagerAdapter;
 import com.wangdaye.mysplash.common.ui.widget.coordinatorView.StatusBarView;
 import com.wangdaye.mysplash.main.view.activity.MainActivity;
-import com.wangdaye.mysplash.main.view.widget.HomePhotosView;
+import com.wangdaye.mysplash.main.view.widget.HomePhotosView2;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -112,7 +112,7 @@ public class HomeFragment extends LoadableFragment<Photo>
 */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_homexaxa, container, false);
         ButterKnife.bind(this, view);
         initModel(savedInstanceState);
         initPresenter();
@@ -150,15 +150,15 @@ public class HomeFragment extends LoadableFragment<Photo>
         }
     }
 
-//    @Override
-//    public void initStatusBarStyle() {
-//        DisplayUtils.setStatusBarStyle(getActivity(), needSetDarkStatusBar());
-//    }
-
     @Override
     public void initStatusBarStyle() {
-
+        DisplayUtils.setStatusBarStyle(getActivity(), needSetDarkStatusBar());
     }
+
+//    @Override
+//    public void initStatusBarStyle() {
+//
+//    }
 
     @Override
     public void initNavigationBarStyle() {
@@ -177,22 +177,22 @@ public class HomeFragment extends LoadableFragment<Photo>
     public void writeLargeData(MysplashActivity.BaseSavedStateFragment outState) {
         if (pagers[newPage()] != null) {
             ((MainActivity.SavedStateFragment) outState).setHomeNewList(
-                    ((HomePhotosView) pagers[newPage()]).getPhotos());
+                    ((HomePhotosView2) pagers[newPage()]).getPhotos());
         }
         if (pagers[featuredPage()] != null) {
             ((MainActivity.SavedStateFragment) outState).setHomeFeaturedList(
-                    ((HomePhotosView) pagers[featuredPage()]).getPhotos());
+                    ((HomePhotosView2) pagers[featuredPage()]).getPhotos());
         }
     }
 
     @Override
     public void readLargeData(MysplashActivity.BaseSavedStateFragment savedInstanceState) {
         if (pagers[newPage()] != null) {
-            ((HomePhotosView) pagers[newPage()]).setPhotos(
+            ((HomePhotosView2) pagers[newPage()]).setPhotos(
                     ((MainActivity.SavedStateFragment) savedInstanceState).getHomeNewList());
         }
         if (pagers[featuredPage()] != null) {
-            ((HomePhotosView) pagers[featuredPage()]).setPhotos(
+            ((HomePhotosView2) pagers[featuredPage()]).setPhotos(
                     ((MainActivity.SavedStateFragment) savedInstanceState).getHomeFeaturedList());
         }
     }
@@ -215,13 +215,14 @@ public class HomeFragment extends LoadableFragment<Photo>
         return container;
     }
 
+    //https://www.androidhive.info/android-databinding-in-recyclerview-profile-screen/
     @Override
     public List<Photo> loadMoreData(List<Photo> list, int headIndex, boolean headDirection, Bundle bundle) {
         int pagerIndex = bundle.getInt(KEY_HOME_FRAGMENT_PAGE_POSITION, -1);
-        if (((HomePhotosView) pagers[pagerIndex])
+        if (((HomePhotosView2) pagers[pagerIndex])
                 .getOrder()
                 .equals(bundle.getString(KEY_HOME_FRAGMENT_PAGE_ORDER, ""))) {
-            return ((HomePhotosView) pagers[pagerIndex]).loadMore(list, headIndex, headDirection);
+            return ((HomePhotosView2) pagers[pagerIndex]).loadMore(list, headIndex, headDirection);
         }
         return new ArrayList<>();
     }
@@ -232,7 +233,7 @@ public class HomeFragment extends LoadableFragment<Photo>
         bundle.putInt(KEY_HOME_FRAGMENT_PAGE_POSITION, pagerIndex);
         if (pagerManagePresenter.getPagerPosition() == newPage()
                 || pagerManagePresenter.getPagerPosition() == featuredPage()) {
-            bundle.putString(KEY_HOME_FRAGMENT_PAGE_ORDER, ((HomePhotosView) pagers[pagerIndex]).getOrder());
+            bundle.putString(KEY_HOME_FRAGMENT_PAGE_ORDER, ((HomePhotosView2) pagers[pagerIndex]).getOrder());
         }
         return bundle;
     }
@@ -240,7 +241,7 @@ public class HomeFragment extends LoadableFragment<Photo>
     @Override
     public void updateData(Photo photo) {
         int page = pagerManagePresenter.getPagerPosition();
-        ((HomePhotosView) pagers[page]).updatePhoto(photo, true);
+        ((HomePhotosView2) pagers[page]).updatePhoto(photo, true);
     }
 
     // init.
@@ -295,14 +296,14 @@ public class HomeFragment extends LoadableFragment<Photo>
         List<View> pageList = new ArrayList<>();
 
         pageList.add(
-                new HomePhotosView(
+                new HomePhotosView2(
                         (MainActivity) getActivity(),
                         Mysplash.CATEGORY_TOTAL_NEW,
                         R.id.fragment_home_page_new,
                         newPage(),
                         pagerManagePresenter.getPagerPosition() == newPage()));
         pageList.add(
-                new HomePhotosView(
+                new HomePhotosView2(
                         (MainActivity) getActivity(),
                         Mysplash.CATEGORY_TOTAL_FEATURED,
                         R.id.fragment_home_page_featured,

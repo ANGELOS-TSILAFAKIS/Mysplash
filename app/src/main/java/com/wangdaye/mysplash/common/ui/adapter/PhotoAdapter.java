@@ -28,6 +28,7 @@ import com.wangdaye.mysplash.common.basic.activity.MysplashActivity;
 import com.wangdaye.mysplash.common.ui.dialog.DownloadRepeatDialog;
 import com.wangdaye.mysplash.common.ui.widget.CircleImageView;
 import com.wangdaye.mysplash.common.ui.widget.CircularProgressIcon;
+import com.wangdaye.mysplash.common.ui.widget.freedomSizeView.FreedomImageView;
 import com.wangdaye.mysplash.common.utils.DisplayUtils;
 import com.wangdaye.mysplash.common.utils.FileUtils;
 import com.wangdaye.mysplash.common.utils.helper.NotificationHelper;
@@ -37,7 +38,6 @@ import com.wangdaye.mysplash.common.utils.helper.IntentHelper;
 import com.wangdaye.mysplash.common.utils.manager.AuthManager;
 import com.wangdaye.mysplash.common.ui.dialog.DeleteCollectionPhotoDialog;
 import com.wangdaye.mysplash.common.ui.dialog.SelectCollectionDialog;
-import com.wangdaye.mysplash.common.ui.widget.freedomSizeView.FreedomImageView;
 import com.wangdaye.mysplash.collection.view.activity.CollectionActivity;
 import com.wangdaye.mysplash.user.view.activity.UserActivity;
 
@@ -317,7 +317,7 @@ public class PhotoAdapter extends FooterAdapter<RecyclerView.ViewHolder>
             return FooterHolder.buildInstance(parent);
         } else {
             View v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_photo, parent, false);
+                    .inflate(R.layout.item_photoxaxa, parent, false);
             return new ViewHolder(v);
         }
     }

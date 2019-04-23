@@ -64,7 +64,7 @@ import butterknife.ButterKnife;
  * */
 
 @SuppressLint("ViewConstructor")
-public class HomePhotosView extends BothWaySwipeRefreshLayout
+public class HomePhotosView2 extends BothWaySwipeRefreshLayout
         implements PhotosView, PagerView, LoadView, ScrollView,
         BothWaySwipeRefreshLayout.OnRefreshAndLoadListener, LargeErrorStateAdapter.OnRetryListener,
         SelectCollectionDialog.OnCollectionsChangedListener {
@@ -91,7 +91,7 @@ public class HomePhotosView extends BothWaySwipeRefreshLayout
         List<Integer> pageList;
         boolean over;
 
-        SavedState(HomePhotosView view) {
+        SavedState(HomePhotosView2 view) {
             this.order = view.photosModel.getPhotosOrder();
             this.page = view.photosModel.getPhotosPage();
             this.pageList = new ArrayList<>();
@@ -146,7 +146,7 @@ public class HomePhotosView extends BothWaySwipeRefreshLayout
         };
     }
 
-    public HomePhotosView(MainActivity a, @Mysplash.PhotosTypeRule int photosType, int id,
+    public HomePhotosView2(MainActivity a, @Mysplash.PhotosTypeRule int photosType, int id,
                            int index, boolean selected) {
         super(a);
         this.setId(id);

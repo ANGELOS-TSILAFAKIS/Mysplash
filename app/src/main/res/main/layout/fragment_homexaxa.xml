@@ -36,7 +36,7 @@
                     app:popupTheme="@style/MysplashPopupMenuTheme"
                     tools:ignore="UnusedAttribute">
 
-                    <include layout="@layout/container_notification_bar" />
+                    <include layout="@layout/container_notification_barxaxa" />
 
                 </android.support.v7.widget.Toolbar>
 
